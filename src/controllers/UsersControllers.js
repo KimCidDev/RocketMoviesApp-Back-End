@@ -11,9 +11,14 @@ class UsersControllers {
       [email]
     );
 
-    if (!checkIfUserExists) {
+    if (checkIfUserExists) {
       throw new AppError('Este email já está em uso');
     }
+
+    await database.run(
+      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+      [name, email, password]
+    );
 
     response.status(201).json({ name, email, password });
   }
