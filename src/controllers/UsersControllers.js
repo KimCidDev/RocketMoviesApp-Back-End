@@ -25,6 +25,8 @@ class UsersControllers {
 
     response.status(201).json({ name, email, password });
   }
+
+  async update(request, response) {}
 }
 
 module.exports = UsersControllers;
